@@ -9,9 +9,45 @@
 			pannellum = window.pannellum;
 			//
 			pannellum.viewer('box', {
-				type: 'equirectangular',
-				panorama: 'https://pannellum.org/images/alma.jpg',
-				autoLoad: true
+				default: {
+					firstScene: 'circle',
+					sceneFadeDuration: 500
+				},
+				autoLoad: true,
+				scenes: {
+					circle: {
+						title: 'Mason Circle',
+						yaw: 130,
+						type: 'equirectangular',
+						panorama: 'https://pannellum.org/images/from-tree.jpg',
+						hotSpots: [
+							{
+								pitch: -2.1,
+								yaw: 132.9,
+								type: 'scene',
+								text: 'Spring House or Dairy',
+								sceneId: 'house',
+								targetYaw: 214
+							}
+						]
+					},
+					house: {
+						title: 'Spring House or Dairy',
+						type: 'equirectangular',
+						yaw: 214,
+						panorama: 'https://pannellum.org/images/bma-0.jpg',
+						hotSpots: [
+							{
+								pitch: -0.6,
+								yaw: 37.1,
+								type: 'scene',
+								text: 'Mason Circle',
+								sceneId: 'circle',
+								targetYaw: 0
+							}
+						]
+					}
+				}
 			});
 		};
 	}
@@ -473,7 +509,7 @@
 <section>
 	<h1 class="text-3xl font-bold mb-2 text-center">Touring Online</h1>
 	<div
-		class="w-full max-w-3xl h-[calc(100vh-100px)] max-h-[500px] bg-gray-100 mx-auto mt-4 {pannellum
+		class="w-full max-w-3xl h-[calc(100vh-140px)] max-h-[600px] min-h-[400px] bg-gray-100 mx-auto mt-4 {pannellum
 			? ''
 			: 'cursor-wait'}"
 	>

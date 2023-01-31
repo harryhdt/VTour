@@ -10,8 +10,8 @@
 		class="fixed inset-0 z-[9999] bg-white bg-opacity-20 backdrop-blur-sm md:backdrop-blur-none md:bg-transparent md:cursor-wait"
 	/>
 {/if}
-<div id="app" class="min-h-screen flex flex-col p-4 md:p-6 font-lato">
-	<main>
+<div id="app" class="fixed inset-0 z-10 flex flex-col p-4 md:p-6 font-lato overflow-auto">
+	<main class="mb-4">
 		<slot />
 	</main>
 	<footer class="text-center mt-auto">
