@@ -65,9 +65,9 @@
 		<div>
 			<span> Image resolution: </span>
 			<select on:change={imageResChanged}>
-				<option value="low">Low</option>
-				<option value="medium">Medium</option>
-				<option value="high" selected>High</option>
+				<option value="low">Low (3.2MB)</option>
+				<option value="medium">Medium (5.7MB)</option>
+				<option value="high" selected>High (9.1MB)</option>
 			</select>
 		</div>
 	</div>
