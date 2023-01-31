@@ -11,10 +11,10 @@
 		>
 	</div>
 	<div class="flex items-center justify-center space-x-4">
-		<a href="/vtour-medium" class="text-blue-700 hover:text-gray-700">Low 3.2MB</a>
+		<a href="/vtour-low" class="text-blue-700 hover:text-gray-700">Low 3.2MB</a>
 		<span class="text-gray-300">|</span>
 		<a href="/vtour-medium" class="text-blue-700 hover:text-gray-700">Medium 5.7MB</a>
 		<span class="text-gray-300">|</span>
-		<a href="/vtour-medium" class="text-blue-700 hover:text-gray-700">High 9.1MB</a>
+		<a href="/vtour-high" class="text-blue-700 hover:text-gray-700">High 9.1MB</a>
 	</div>
 </section>
