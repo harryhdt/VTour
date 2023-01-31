@@ -3050,7 +3050,7 @@
 </svelte:head>
 
 <div
-	class="w-full max-w-3xl h-[calc(100vh-140px)] max-h-[600px] min-h-[400px] bg-gray-100 mx-auto mt-4 {className} {pannellum
+	class="w-full max-w-5xl h-[calc(100vh-140px)] max-h-[600px] min-h-[400px] bg-gray-100 mx-auto mt-4 {className} {pannellum
 		? ''
 		: 'cursor-wait'}"
 >
