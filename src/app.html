@@ -7,6 +7,52 @@
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-code="hover">
-		<div style="display: contents">%sveltekit.body%</div>
+		<div style="display: contents">
+			<div id="loading-app" style="position: fixed; top: 0; right: 0; bottom: 0; left: 0">
+				<div
+					style="
+						display: flex;
+						width: 100%;
+						height: 100%;
+						align-items: center;
+						justify-content: center;
+					"
+				>
+					<style>
+						@keyframes spin {
+							to {
+								transform: rotate(360deg);
+							}
+						}
+					</style>
+					<svg
+						style="
+							width: 32px;
+							height: 32px;
+							color: rgb(107, 114, 128);
+							animation: spin 1s linear infinite;
+						"
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+					>
+						<circle
+							style="opacity: 0.25"
+							cx="12"
+							cy="12"
+							r="10"
+							stroke="currentColor"
+							stroke-width="4"
+						/>
+						<path
+							style="opacity: 0.75"
+							fill="currentColor"
+							d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+						/>
+					</svg>
+				</div>
+			</div>
+			%sveltekit.body%
+		</div>
 	</body>
 </html>
