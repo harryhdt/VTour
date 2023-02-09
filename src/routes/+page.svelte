@@ -11,6 +11,8 @@
 		>
 	</div>
 	<div class="flex items-center justify-center space-x-4">
+		<a href="/vtour-very-low" class="text-blue-700 hover:text-gray-700">Very low 1.2MB</a>
+		<span class="text-gray-300">|</span>
 		<a href="/vtour-low" class="text-blue-700 hover:text-gray-700">Low 3.2MB</a>
 		<span class="text-gray-300">|</span>
 		<a href="/vtour-medium" class="text-blue-700 hover:text-gray-700">Medium 5.7MB</a>

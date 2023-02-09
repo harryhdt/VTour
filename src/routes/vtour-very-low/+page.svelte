@@ -428,7 +428,7 @@
 	//
 	const imageResChanged = async (e: any) => {
 		const value = e.target.value;
-		if (value !== 'low') {
+		if (value !== 'high') {
 			await goto('/vtour-' + value);
 		}
 	};
@@ -445,8 +445,8 @@
 		<div>
 			<span> Image resolution: </span>
 			<select on:change={imageResChanged}>
-				<option value="very-low">Very low (1.2MB)</option>
-				<option value="low" selected>Low (3.2MB)</option>
+				<option value="very-low" selected>Very low (1.2MB)</option>
+				<option value="low">Low (3.2MB)</option>
 				<option value="medium">Medium (5.7MB)</option>
 				<option value="high">High (9.1MB)</option>
 			</select>
