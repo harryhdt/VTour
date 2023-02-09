@@ -3101,7 +3101,7 @@
 					<button
 						transition:fade|local={{ duration: 200 }}
 						on:click={hideTheMap}
-						class="rounded absolute bottom-0 right-0 z-30 shadow-lg bg-red-600 px-1 py-1 pb-px sm:px-2 sm:py-2 sm:pb-1 hover:bg-red-700 active:scale-[.98] transition-all duration-300"
+						class="rounded absolute bottom-0 right-0 z-30 shadow-lg bg-red-600 px-1 py-px sm:px-2 sm:py-1 hover:bg-red-700 active:scale-[.98] transition-all duration-300 flex items-center"
 					>
 						<span class="text-white font-medium text-xs sm:text-sm">Close</span>
 					</button>
@@ -3113,7 +3113,7 @@
 					<button
 						transition:fade|local={{ duration: 200 }}
 						on:click={showTheMap}
-						class="rounded absolute bottom-0 right-0 z-20 shadow-lg bg-white px-1 py-1 pb-px sm:px-2 sm:py-2 sm:pb-1 hover:bg-neutral-100 active:scale-[.98] transition-all duration-300"
+						class="rounded absolute bottom-0 right-0 z-20 shadow-lg bg-white px-1 py-px sm:px-2 sm:py-1 hover:bg-neutral-100 active:scale-[.98] transition-all duration-300 flex items-center"
 					>
 						<span class="text-neutral-600 font-medium text-xs sm:text-sm">Map</span>
 					</button>
