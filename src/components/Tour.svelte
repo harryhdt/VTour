@@ -1,13 +1,15 @@
 <script lang="ts">
 	/* eslint-disable */
 	import { onDestroy, onMount } from 'svelte';
+	import { fade, fly } from 'svelte/transition';
 
 	let className = '';
 	export let config: any;
 	export { className as class };
 	//
+	let viewer: any;
 	const loadTour = (tour: any) => {
-		tour.viewer('box', config);
+		viewer = tour.viewer('box', config);
 	};
 	let pannellum: any;
 	onMount(() => {
@@ -26,6 +28,19 @@
 	onDestroy(() => {
 		destroyPannellum();
 	});
+
+	//
+
+	export let map = false;
+	let showMap = false;
+	const showTheMap = () => (showMap = true);
+	const hideTheMap = () => (showMap = false);
+	const toggleTheMap = () => (showMap = !showMap);
+	//
+	const setScene = (id: any) => {
+		viewer.loadScene(id);
+		hideTheMap();
+	};
 </script>
 
 <svelte:head>
@@ -3054,7 +3069,7 @@
 		? ''
 		: 'cursor-wait'}"
 >
-	<div id="box" class="flex items-center justify-center w-full h-full">
+	<div id="box" class="flex items-center justify-center w-full h-full relative">
 		{#if !pannellum}
 			<div id="loading-pannellum-1" class="flex items-center justify-center">
 				<svg
@@ -3078,6 +3093,31 @@
 					/>
 				</svg>
 				<span class="text-gray-400">Processing...</span>
+			</div>
+		{/if}
+		{#if map}
+			<div class="absolute z-50 bottom-2 right-2 max-w-[80%]">
+				{#if showMap}
+					<button
+						transition:fade|local={{ duration: 200 }}
+						on:click={hideTheMap}
+						class="rounded absolute bottom-0 right-0 z-30 shadow-lg bg-red-600 px-1 py-1 pb-px sm:px-2 sm:py-2 sm:pb-1 hover:bg-red-700 active:scale-[.98] transition-all duration-300"
+					>
+						<span class="text-white font-medium text-xs sm:text-sm">Close</span>
+					</button>
+
+					<div class="relative z-20 w-full">
+						<slot name="map-area" {setScene} currentScene={viewer.getScene()} />
+					</div>
+				{:else}
+					<button
+						transition:fade|local={{ duration: 200 }}
+						on:click={showTheMap}
+						class="rounded absolute bottom-0 right-0 z-20 shadow-lg bg-white px-1 py-1 pb-px sm:px-2 sm:py-2 sm:pb-1 hover:bg-neutral-100 active:scale-[.98] transition-all duration-300"
+					>
+						<span class="text-neutral-600 font-medium text-xs sm:text-sm">Map</span>
+					</button>
+				{/if}
 			</div>
 		{/if}
 	</div>

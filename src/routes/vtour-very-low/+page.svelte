@@ -1,14 +1,22 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import Tour from '$src/components/tour.svelte';
+	import Tour from '$src/components/Tour.svelte';
+	import TourMapButton from '$src/components/TourMapButton.svelte';
+	import { fly } from 'svelte/transition';
 
 	let wWidth = window.innerWidth;
 	let zoomIn = wWidth >= 1024 ? 120 : wWidth >= 768 ? 100 : wWidth >= 600 ? 80 : 60;
 	//
+	let tm: any;
 	const windowResize = () => {
-		wWidth = window.innerWidth;
-		zoomIn = wWidth >= 1024 ? 120 : wWidth >= 768 ? 100 : wWidth >= 600 ? 80 : 60;
+		clearTimeout(tm);
+		wWidth = 0;
+		//
+		tm = setTimeout(() => {
+			wWidth = window.innerWidth;
+			zoomIn = wWidth >= 1024 ? 120 : wWidth >= 768 ? 100 : wWidth >= 600 ? 80 : 60;
+		}, 300);
 	};
 
 	const images: (string | null)[] = $page.data.images;
@@ -490,7 +498,121 @@
 			</select>
 		</div>
 	</div>
-	{#key wWidth}
-		<Tour config={tourConfig()} />
-	{/key}
+	{#if wWidth}
+		<Tour config={tourConfig()} map>
+			<svelte:fragment slot="map-area" let:setScene let:currentScene>
+				<div
+					class="relative z-20 w-[500px] max-w-full h-auto"
+					transition:fly|local={{ y: 8, x: 8, duration: 200 }}
+				>
+					<TourMapButton
+						classPos="bottom-[11%] right-[46.27%]"
+						activeScene={currentScene == '1'}
+						on:click={() => setScene(1)}
+					>
+						1
+					</TourMapButton>
+					<TourMapButton
+						classPos="bottom-[26%] right-[46.27%]"
+						activeScene={currentScene == '2'}
+						on:click={() => setScene(2)}
+					>
+						2
+					</TourMapButton>
+					<TourMapButton
+						classPos="bottom-[34%] right-[47.27%]"
+						activeScene={currentScene == '3'}
+						on:click={() => setScene(3)}
+					>
+						3
+					</TourMapButton>
+					<TourMapButton
+						classPos="bottom-[38%] right-[47.27%]"
+						activeScene={currentScene == 'A'}
+						on:click={() => setScene('3zoom')}
+					>
+						A
+					</TourMapButton>
+					<TourMapButton
+						classPos="bottom-[36%] right-[36.27%]"
+						activeScene={currentScene == '4'}
+						on:click={() => setScene(4)}
+					>
+						4
+					</TourMapButton>
+					<TourMapButton
+						classPos="bottom-[36%] right-[27.27%]"
+						activeScene={currentScene == '5'}
+						on:click={() => setScene(5)}
+					>
+						5
+					</TourMapButton>
+					<TourMapButton
+						classPos="top-[40%] right-[27.27%]"
+						activeScene={currentScene == '6'}
+						on:click={() => setScene(6)}
+					>
+						6
+					</TourMapButton>
+					<TourMapButton
+						classPos="top-[40%] right-[48%]"
+						activeScene={currentScene == '7'}
+						on:click={() => setScene(7)}
+					>
+						7
+					</TourMapButton>
+					<TourMapButton
+						classPos="top-[15.15%] right-[27.27%]"
+						activeScene={currentScene == '8'}
+						on:click={() => setScene(8)}
+					>
+						8
+					</TourMapButton>
+					<TourMapButton
+						classPos="top-[15.15%] right-[39.27%]"
+						activeScene={currentScene == '9'}
+						on:click={() => setScene(9)}
+					>
+						9
+					</TourMapButton>
+					<TourMapButton
+						classPos="top-[15.15%] left-[39.27%]"
+						activeScene={currentScene == '10'}
+						on:click={() => setScene(10)}
+					>
+						10
+					</TourMapButton>
+					<TourMapButton
+						classPos="top-[15.15%] left-[27.27%]"
+						activeScene={currentScene == '11'}
+						on:click={() => setScene(11)}
+					>
+						11
+					</TourMapButton>
+					<TourMapButton
+						classPos="top-[39%] left-[27.27%]"
+						activeScene={currentScene == '12'}
+						on:click={() => setScene(12)}
+					>
+						12
+					</TourMapButton>
+					<TourMapButton
+						classPos="bottom-[36%] left-[27.27%]"
+						activeScene={currentScene == '13'}
+						on:click={() => setScene(13)}
+					>
+						13
+					</TourMapButton>
+					<TourMapButton
+						classPos="bottom-[36%] left-[37.27%]"
+						activeScene={currentScene == '14'}
+						on:click={() => setScene(14)}
+					>
+						14
+					</TourMapButton>
+					<img src="/denah.jpeg" alt="Denah" class="w-full h-auto rounded shadow-lg" />
+				</div>
+			</svelte:fragment>
+		</Tour>
+	{/if}
 </section>
